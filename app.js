@@ -24,7 +24,6 @@ app.post('/sendmail',(req,res)=>{
     "ack":"Getting info..",
     "auth": process.env.EMAIL
   })
-  console.log(req.body)
   
   //transporter configure
   let transporter = nodemailer.createTransport({

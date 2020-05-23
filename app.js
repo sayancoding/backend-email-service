@@ -21,7 +21,8 @@ app.get('/sendmail',(req,res)=>{
 app.post('/sendmail',(req,res)=>{
   const user = req.body;
   res.status(200).json({
-    "ack":"Getting info.."
+    "ack":"Getting info..",
+    "auth": process.env.EMAIL
   })
   console.log(req.body)
   

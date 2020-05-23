@@ -29,13 +29,23 @@ app.post('/sendmail',(req,res)=>{
       pass: process.env.PASSWORD
     }
   })
+  const output = `
+<p>Hey! Dear <strong><span style="color: rgb(209, 72, 65);">${req.body.name}</span></strong>,</p>
+<br/>
+<p>I&#39;m Sayan Maity, self-taught student developer.I use to think to build on web that&#39;s live on internet. You can connect to involve me kinds of project.🛸</p>
+<p>You can take a glance of my repos.🧰</p>
+<p><a href="https://github.com/sayancoding"><strong><span style="background-color: rgb(239, 239, 239);">Github</span></strong></a></p>
+<p>Touch me through🚀</p>
+<p><a href="https://www.linkedin.com/in/sayan-maity-6316921a6/"><span style="background-color: rgb(239, 239, 239);">Linkedin</span></a>&nbsp; <a href="https://www.instagram.com/backward_space/"><span style="background-color: rgb(239, 239, 239);">Instagram</span></a></p>
+<p><span style="color: rgb(44, 130, 201);">Thank You to connect.</span>🙂</p>
+  `;
 
   let mailOption = {
     from: '"SayanCoding 👻" <alan.digital007@gmail.com>', // sender address
-    to: "sayanmaity007@gmail.com", // list of receivers
+    to: req.body.email, // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Thank to connect", // plain text body
-    html: "<p>Thank</p>", // html body
+    html: output, // html body
   }
 
   transporter.sendMail(mailOption,(err,data)=>{

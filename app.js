@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 app.get('/',(req,res)=>{
   res.send('getting in app')
 })
+app.get('/sendmail',(req,res)=>{
+  res.send('You in sendmail route get request ')
+})
+
 app.post('/sendmail',(req,res)=>{
   const user = req.body;
   res.status(200).json({

@@ -31,7 +31,6 @@ app.post('/sendmail',(req,res)=>{
   })
   const output = `
 <p>Hey! Dear <strong><span style="color: rgb(209, 72, 65);">${req.body.name}</span></strong>,</p>
-<br/>
 <p>I&#39;m Sayan Maity, self-taught student developer.I use to think to build on web that&#39;s live on internet. You can connect to involve me kinds of project.🛸</p>
 <p>You can take a glance of my repos.🧰</p>
 <p><a href="https://github.com/sayancoding"><strong><span style="background-color: rgb(239, 239, 239);">Github</span></strong></a></p>

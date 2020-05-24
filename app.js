@@ -12,17 +12,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/',(req,res)=>{
-  res.send('getting in app')
+  res.status(200).json({
+    "path":"root",
+    "msg":"./GET method"
+  })
 })
 app.get('/sendmail',(req,res)=>{
-  res.send('You in sendmail route get request ')
+  res.status(200).json({
+    "path": "./sendmail",
+    "msg": "./GET method"
+  })
 })
 
 app.post('/sendmail',(req,res)=>{
   const user = req.body;
   res.status(200).json({
-    "ack":"Getting info..",
-    "auth": process.env.EMAIL
+    "path":"Getting info..",
+    "msg":"./POST requested",
+    "auth": process.env.EMAIL,
+    "to":req.body.email
   })
   
   //transporter configure
@@ -53,9 +61,12 @@ app.post('/sendmail',(req,res)=>{
 
   transporter.sendMail(mailOption,(err,data)=>{
     if(err){
-      console.log("get an error..")
+      console.log("Catch an error..")
     }else{
-      console.log("email sended...")
+      console.log(`email sended to ${req.body.email} `)
+      res.status(200).json({
+        "ack":"mail sended.."
+      })
     }
   })
 
